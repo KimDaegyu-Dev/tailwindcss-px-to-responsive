@@ -1,0 +1,40 @@
+{
+  "name": "tailwindcss-px-to-responsive",
+  "version": "0.0.1",
+  "description": "A Tailwind plugin for converting pixel values to rem, vw, vh units. It helps you to create Design-to-Development workflow easier and faster.",
+  "keywords": [
+    "tailwindcss",
+    "tailwind",
+    "rem",
+    "pixel-to-rem",
+    "px-to-rem",
+    "px-to-vw",
+    "px-to-vh",
+    "pixel-to-viewport",
+    "vw",
+    "vh",
+    "rem-converter",
+    "viewport-units",
+    "viewport-units-plugin",
+    "viewport-converter",
+    "tailwind-preset",
+    "tailwind-px-to-responsive",
+    "tailwind-px-to-vw",
+    "tailwind-px-to-vh",
+    "rem-units"
+  ],
+  "repository": "github:KimDaegyu-Dev/tailwindcss-px-to-responsive",
+  "license": "MIT",
+  "author": "KimDaegyu",
+  "type": "commonjs",
+  "files": [
+    "src"
+  ],
+  "main": "src/index.js",
+  "scripts": {
+    "release": "changeset publish"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
