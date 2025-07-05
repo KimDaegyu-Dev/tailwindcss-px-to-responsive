@@ -1,5 +1,5 @@
 //  padding, margin, width, minWidth, maxWidth, height, minHeight, maxHeight, gap, inset, space, translate, scrollMargin, and scrollPadding
-const spacing = new Map([
+export const spacing = new Map<string, string>([
   ["padding", "padding"],
   ["margin", "margin"],
   ["width", "width"],
@@ -20,7 +20,7 @@ const spacing = new Map([
   ["size", "size"],
   ["spacing", "spacing"],
 ]);
-const spacingHorizontal = new Map([
+const spacingHorizontal = new Map<string, string | string[]>([
   ["px", ["padding-left", "padding-right"]],
   ["mx", ["margin-left", "margin-right"]],
   ["w", ["width", "min-width", "max-width"]],
@@ -48,7 +48,7 @@ const spacingHorizontal = new Map([
   ["scroll-px", ["scroll-padding-left", "scroll-padding-right"]],
   ["border-spacing-x", "border-spacing-x"],
 ]);
-const spacingVertical = new Map([
+const spacingVertical = new Map<string, string | string[]>([
   ["py", ["padding-top", "padding-bottom"]],
   ["my", ["margin-top", "margin-bottom"]],
   ["h", ["height", "min-height", "max-height"]],
@@ -68,7 +68,7 @@ const spacingVertical = new Map([
   ["scroll-pb", "scroll-padding-bottom"],
   ["scroll-py", ["scroll-padding-top", "scroll-padding-bottom"]],
 ]);
-const padding = new Map([
+const padding = new Map<string, string | string[]>([
   ["p", "padding"],
   ["pt", "padding-top"],
   ["pr", "padding-right"],
@@ -80,7 +80,7 @@ const padding = new Map([
   ["pe", "padding-inline-end"],
 ]);
 
-const margin = new Map([
+const margin = new Map<string, string | string[]>([
   ["m", "margin"],
   ["mt", "margin-top"],
   ["mr", "margin-right"],
@@ -92,24 +92,24 @@ const margin = new Map([
   ["me", "margin-inline-end"],
 ]);
 
-const width = new Map([
+const width = new Map<string, string | string[]>([
   ["w", "width"],
   ["min-w", "min-width"],
   ["max-w", "max-width"],
 ]);
 
-const height = new Map([
+const height = new Map<string, string | string[]>([
   ["h", "height"],
   ["min-h", "min-height"],
   ["max-h", "max-height"],
 ]);
-const gap = new Map([
+const gap = new Map<string, string | string[]>([
   ["gap", "gap"],
   ["gap-x", "gap-x"],
   ["gap-y", "gap-y"],
 ]);
 
-const border = new Map([
+const border = new Map<string, string | string[]>([
   ["border", "border-width"],
   ["border-t", "border-top-width"],
   ["border-r", "border-right-width"],
@@ -118,19 +118,21 @@ const border = new Map([
   ["border-x", ["border-left-width", "border-right-width"]],
   ["border-y", ["border-top-width", "border-bottom-width"]],
 ]);
-const borderSpacing = new Map([
+const borderSpacing = new Map<string, string | string[]>([
   ["border-spacing", ["border-spacing-x", "border-spacing-y"]],
   ["border-spacing-x", "border-spacing-x"],
   ["border-spacing-y", "border-spacing-y"],
 ]);
-const textIndent = new Map([["indent", "text-indent"]]);
-const size = new Map([
+const textIndent = new Map<string, string | string[]>([
+  ["indent", "text-indent"],
+]);
+const size = new Map<string, string | string[]>([
   ["size", ["width", "height"]],
   ["size-min", ["min-width", "min-height"]],
   ["size-max", ["max-width", "max-height"]],
 ]);
-const flexBasis = new Map([["basis", "flex-basis"]]);
-const inset = new Map([
+const flexBasis = new Map<string, string | string[]>([["basis", "flex-basis"]]);
+const inset = new Map<string, string | string[]>([
   ["inset", "inset"],
   ["inset-left", "inset-inline-start"],
   ["inset-right", "inset-inline-end"],
@@ -145,7 +147,7 @@ const inset = new Map([
   ["bottom", "bottom"],
   ["left", "left"],
 ]);
-const scrollMargin = new Map([
+const scrollMargin = new Map<string, string | string[]>([
   ["scroll-m", "scroll-margin"],
   ["scroll-mx", ["scroll-margin-left", "scroll-margin-right"]],
   ["scroll-my", ["scroll-margin-top", "scroll-margin-bottom"]],
@@ -156,7 +158,7 @@ const scrollMargin = new Map([
   ["scroll-ml", "scroll-margin-left"],
   ["scroll-mr", "scroll-margin-right"],
 ]);
-const scrollPadding = new Map([
+const scrollPadding = new Map<string, string | string[]>([
   ["scroll-p", "scroll-padding"],
   ["scroll-px", ["scroll-padding-left", "scroll-padding-right"]],
   ["scroll-py", ["scroll-padding-top", "scroll-padding-bottom"]],
@@ -168,8 +170,8 @@ const scrollPadding = new Map([
   ["scroll-pr", "scroll-padding-right"],
 ]);
 
-const space = new Map([["space", "space"]]);
-const possibleUtilities = [
+const space = new Map<string, string | string[]>([["space", "space"]]);
+export const possibleUtilities: [Map<string, string | string[]>, string][] = [
   [padding, "padding"],
   [margin, "margin"],
   [width, "width"],
@@ -187,7 +189,7 @@ const possibleUtilities = [
   [borderSpacing, "border-spacing"],
 ];
 
-export {
+export const utilities = {
   padding,
   margin,
   width,

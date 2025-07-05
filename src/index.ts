@@ -3,20 +3,20 @@ import plugin from "tailwindcss/plugin";
 import { spacing, possibleUtilities } from "./utilities";
 
 // px 값을 vw, vh, rem 등으로 변환
-function numberToUnit(value, unit) {
+function numberToUnit(value: string | number, unit: string): string {
   const cleanValue = (typeof value === "string" ? value : `${value}`).trim();
   const remDivider = 16;
   const number = parseFloat(cleanValue);
-  if (!number) return value;
+  if (!number) return value as string;
   if (unit === "vw") return number === 0 ? "0" : `calc(${number} * var(--vw))`;
   if (unit === "vh") return number === 0 ? "0" : `calc(${number} * var(--vh))`;
   if (unit === "rem") return number === 0 ? "0" : `${number / remDivider}rem`;
-  return value;
+  return value as string;
 }
 
 // 1~max까지의 값 객체 생성
-function makeNumberValues(max = 100, unit = "") {
-  const values = {};
+function makeNumberValues(max = 100, unit = ""): Record<string, string> {
+  const values: Record<string, string> = {};
   const remDivider = 16;
   for (let i = 1; i <= max; i++) {
     if (unit === "rem") {
@@ -31,21 +31,26 @@ function makeNumberValues(max = 100, unit = "") {
 }
 
 // 유틸리티별 플러그인 생성
-function createUtilityPlugin(utilityMap, util, unit, max) {
+function createUtilityPlugin(
+  utilityMap: Map<string, string | string[]>,
+  util: string,
+  unit: string,
+  max: number
+) {
   // utilityNames: 배열(예: ["h"])
-  return plugin(function ({ matchUtilities }) {
+  return plugin(function ({ matchUtilities }: { matchUtilities: any }) {
     const cssProp = utilityMap.get(util);
     matchUtilities(
       {
-        [util]: (value) => {
+        [util]: (value: string | number) => {
           if (Array.isArray(cssProp)) {
-            const style = {};
+            const style: Record<string, string> = {};
             for (const prop of cssProp) {
               style[prop] = numberToUnit(value, unit);
             }
             return style;
           } else {
-            return { [cssProp]: numberToUnit(value, unit) };
+            return { [cssProp as string]: numberToUnit(value, unit) };
           }
         },
       },
@@ -55,9 +60,16 @@ function createUtilityPlugin(utilityMap, util, unit, max) {
 }
 
 // 메인 preset 생성 함수
-module.exports = (options) => {
-  const plugins = [];
-  const themeExtend = {};
+export default (
+  options: {
+    utilities?: string[];
+    max?: number;
+    unit?: string;
+    theme?: string;
+  }[]
+) => {
+  const plugins: any[] | undefined = [];
+  const themeExtend: Record<string, any> = {};
   for (const option of options) {
     if (option.utilities) {
       for (const [utilityMap, themeKey] of possibleUtilities) {
@@ -65,7 +77,12 @@ module.exports = (options) => {
           if (utilityMap.has(util)) {
             // 플러그인: 해당 유틸리티만
             plugins.push(
-              createUtilityPlugin(utilityMap, util, option.unit, option.max)
+              createUtilityPlugin(
+                utilityMap,
+                util,
+                option.unit || "",
+                option.max || 100
+              )
             );
           }
         }
@@ -76,7 +93,7 @@ module.exports = (options) => {
       if (spacing.has(option.theme)) {
         next = makeNumberValues(option.max);
       } else {
-        next = makeNumberValues(option.max, option.unit);
+        next = makeNumberValues(option.max || 100, option.unit || "");
       }
       themeExtend[option.theme] = next;
     }

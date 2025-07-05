@@ -1,0 +1,20 @@
+export declare const spacing: Map<string, string>;
+export declare const possibleUtilities: [Map<string, string | string[]>, string][];
+export declare const utilities: {
+    padding: Map<string, string | string[]>;
+    margin: Map<string, string | string[]>;
+    width: Map<string, string | string[]>;
+    height: Map<string, string | string[]>;
+    gap: Map<string, string | string[]>;
+    border: Map<string, string | string[]>;
+    textIndent: Map<string, string | string[]>;
+    size: Map<string, string | string[]>;
+    flexBasis: Map<string, string | string[]>;
+    inset: Map<string, string | string[]>;
+    scrollMargin: Map<string, string | string[]>;
+    scrollPadding: Map<string, string | string[]>;
+    space: Map<string, string | string[]>;
+    spacing: Map<string, string>;
+    borderSpacing: Map<string, string | string[]>;
+    possibleUtilities: [Map<string, string | string[]>, string][];
+};
