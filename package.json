@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-px-to-responsive",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A Tailwind plugin for converting pixel values to rem, vw, vh units. It helps you to create Design-to-Development workflow easier and faster.",
   "keywords": [
     "tailwindcss",
@@ -30,6 +30,14 @@
   "files": [
     "src"
   ],
+  "exports": {
+    "./useResizeHook": "./src/useResizeHook.tsx",
+    ".": "./src/index.js"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "tailwindcss": ">=3.4.1"
+  },
   "main": "src/index.js",
   "scripts": {
     "release": "changeset publish"
